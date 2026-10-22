@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AKYEGET — Тур 2026–2027</title>
+  <meta name="description" content="AKYEGET TOUR 2026–2027 — совместные концерты AKYEGET и IRDAN в районах Башкортостана. Расписание и билеты.">
+  <meta name="theme-color" content="#0a0707">
+  <meta property="og:title" content="AKYEGET × IRDAN — тур 2026–2027">
+  <meta property="og:description" content="Совместные концерты AKYEGET и IRDAN в районах Башкортостана: ноябрь 2026 — январь 2027.">
+  <meta property="og:image" content="assets/img/g-crowd.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@300;500;700;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-artist.webp?v=14">
+  <link rel="stylesheet" href="assets/css/style.css?v=22">
+</head>
+<body>
+  <a class="skip" href="#concerts">К концертам</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a class="header__logo" href="#top" aria-label="AKYEGET">
+        <span class="wordmark">AKYEGET</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Меню">
+        <a href="#concerts">Тур</a>
+        <a href="#photo">Фото</a>
+        <a href="#contacts">Контакты</a>
+        <div class="nav__social">
+          <a href="https://www.instagram.com/akyeget" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://music.yandex.ru/artist/8927489" target="_blank" rel="noopener">Яндекс Музыка</a>
+        </div>
+      </nav>
+
+      <div class="header__right">
+        <button type="button" class="sound" id="sound" aria-pressed="false" aria-label="Музыка">
+          <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sound__label">Звук</span>
+        </button>
+        <a class="btn btn--solid header__buy" href="#concerts">Купить билет</a>
+        <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span>
+          <span class="sr">Меню</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-label="AKYEGET TOUR 2026–2027">
+      <div class="smoke" aria-hidden="true">
+        <i class="smoke__blob smoke__blob--r1"></i>
+        <i class="smoke__blob smoke__blob--r2"></i>
+        <i class="smoke__blob smoke__blob--r3"></i>
+        <i class="smoke__blob smoke__blob--g1"></i>
+        <i class="smoke__blob smoke__blob--g2"></i>
+        <i class="smoke__blob smoke__blob--g3"></i>
+      </div>
+
+      <div class="atmos" aria-hidden="true">
+        <i class="atmos__fog atmos__fog--back"></i>
+      </div>
+
+      <h1 class="hero__logo" aria-label="AKYEGET">
+        <span class="wordmark wordmark--hero">AKYEGET</span>
+      </h1>
+
+      <div class="hero__artist">
+        <img src="assets/img/hero-artist.webp?v=14" width="1024" height="1536" alt="AKYEGET" fetchpriority="high">
+      </div>
+      <i class="atmos__fog atmos__fog--front" aria-hidden="true"></i>
+
+      <div class="hero__tour">
+        <p class="hero__tour-label">Тур</p>
+        <p class="hero__years">2026 — 2027</p>
+        <a class="btn btn--hero" href="#concerts">Купить билет <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a class="hero__listen" href="https://music.yandex.ru/artist/8927489" target="_blank" rel="noopener">Слушать на Яндекс Музыке</a>
+      </div>
+
+      <div class="grain" aria-hidden="true"></div>
+    </section>
+
+    <!-- ================= TICKER ================= -->
+    <div class="ticker" aria-label="Даты тура">
+      <div class="ticker__track" id="ticker"><!-- заполняется из config.js --></div>
+    </div>
+
+    <!-- ================= CONCERTS ================= -->
+    <section class="concerts" id="concerts">
+      <div class="concerts__photo" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow reveal">AKYEGET × IRDAN</p>
+            <h2 class="h2 reveal">Концерты</h2>
+          </div>
+          <p class="section-head__sub reveal">Увидимся<br>в твоём крае</p>
+        </div>
+
+        <div class="schedule" id="schedule"><!-- заполняется из config.js --></div>
+        <p class="schedule__note reveal">Все концерты — совместно с IRDAN · Билеты продаются через QTICKETS</p>
+      </div>
+    </section>
+
+    <!-- ================= PHOTO ================= -->
+    <section class="gallery" id="photo">
+      <div class="reel reveal" id="reel"><!-- заполняется из config.js --></div>
+    </section>
+
+    <!-- ================= CONTACTS ================= -->
+    <section class="contacts" id="contacts">
+      <div class="smoke smoke--low" aria-hidden="true">
+        <i class="smoke__blob smoke__blob--r2"></i>
+        <i class="smoke__blob smoke__blob--g2"></i>
+      </div>
+      <div class="container contacts__grid">
+        <div>
+          <p class="eyebrow reveal">AKYEGET</p>
+          <h2 class="h2 reveal">Контакты</h2>
+          <p class="section-head__sub reveal">Следите за новостями тура</p>
+        </div>
+        <div class="contacts__lists">
+          <div class="reveal">
+            <p class="contacts__label">Социальные сети</p>
+            <ul class="socials" id="socials"></ul>
+          </div>
+          <ul class="contact-list reveal" id="contact-list"></ul>
+        </div>
+      </div>
+      <div class="contacts__mark" aria-hidden="true"><span class="wordmark">AKYEGET</span></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> AKYEGET. Все права защищены</span>
+      <a href="#top" class="footer__top">Наверх</a>
+    </div>
+  </footer>
+
+  <!-- ================= TICKET NOTICE ================= -->
+  <div class="notice" id="notice" role="dialog" aria-modal="true" aria-labelledby="notice-title" hidden>
+    <div class="notice__card">
+      <p class="eyebrow" id="notice-date"></p>
+      <h3 class="notice__title" id="notice-title"></h3>
+      <p class="notice__sub">AKYEGET × IRDAN</p>
+      <p class="notice__text">Продажа билетов на этот концерт скоро откроется. Ссылка на покупку появится здесь, на сайте.</p>
+      <button class="btn btn--solid notice__close" type="button">Понятно</button>
+    </div>
+  </div>
+
+  <audio id="music" preload="auto" loop></audio>
+
+  <script src="assets/js/config.js?v=21"></script>
+  <script src="assets/js/main.js?v=22"></script>
+</body>
+</html>
