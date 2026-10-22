@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@300;500;700;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero-artist.webp?v=14">
-  <link rel="stylesheet" href="assets/css/style.css?v=22">
+  <link rel="stylesheet" href="assets/css/style.css?v=23">
 </head>
 <body>
   <a class="skip" href="#concerts">К концертам</a>
@@ -36,9 +36,13 @@
       </nav>
 
       <div class="header__right">
-        <button type="button" class="sound" id="sound" aria-pressed="false" aria-label="Музыка">
-          <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="sound__label">Звук</span>
+        <button type="button" class="sound" id="sound" aria-pressed="false" aria-label="Включить музыку">
+          <svg class="sound__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="sound__speaker" d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+            <path class="sound__wave sound__wave--1" d="M15.5 9.5a3.5 3.5 0 0 1 0 5" />
+            <path class="sound__wave sound__wave--2" d="M18 7a7 7 0 0 1 0 10" />
+            <path class="sound__off" d="M16 9.5l5 5M21 9.5l-5 5" />
+          </svg>
         </button>
         <a class="btn btn--solid header__buy" href="#concerts">Купить билет</a>
         <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav">
@@ -156,6 +160,6 @@
   <audio id="music" preload="auto" loop></audio>
 
   <script src="assets/js/config.js?v=21"></script>
-  <script src="assets/js/main.js?v=22"></script>
+  <script src="assets/js/main.js?v=23"></script>
 </body>
 </html>
