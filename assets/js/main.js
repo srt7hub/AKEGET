@@ -142,39 +142,40 @@
   function initMusic() {
     var audio = document.getElementById("music");
     var btn = document.getElementById("sound");
-    var label = btn.querySelector(".sound__label");
     var KEY = "akyeget-sound";
     var target = CFG.music.volume == null ? 0.6 : CFG.music.volume;
     var fadeTimer = null;
     var resumeOnShow = false;
 
     audio.src = CFG.music.src;
-    btn.title = "AKYEGET — " + CFG.music.title;
 
     function pref() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
     function savePref(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
 
+    // Плавная громкость за фиксированное число шагов. На iPhone громкость менять нельзя
+    // (audio.volume всегда 1), поэтому завершение не зависит от того, что вернёт volume.
     function fadeTo(v, done) {
       clearInterval(fadeTimer);
+      var from = audio.volume, step = 0, steps = 8;
       fadeTimer = setInterval(function () {
-        var next = audio.volume + (v > audio.volume ? 0.04 : -0.06);
-        if ((v > audio.volume && next >= v) || (v <= audio.volume && next <= v)) {
-          audio.volume = Math.max(0, Math.min(1, v));
+        step++;
+        try { audio.volume = Math.max(0, Math.min(1, from + (v - from) * step / steps)); } catch (e) {}
+        if (step >= steps) {
           clearInterval(fadeTimer);
           if (done) done();
-        } else {
-          audio.volume = Math.max(0, Math.min(1, next));
         }
-      }, 60);
+      }, 40);
     }
     function render() {
       var on = !audio.paused;
       btn.classList.toggle("is-playing", on);
       btn.setAttribute("aria-pressed", String(on));
-      label.textContent = on ? "Звук вкл" : "Звук выкл";
+      btn.setAttribute("aria-label", on ? "Выключить музыку" : "Включить музыку");
+      btn.title = (on ? "Выключить музыку" : "Включить музыку") + " — AKYEGET, «" + CFG.music.title + "»";
     }
     function play() {
-      audio.volume = 0;
+      clearInterval(fadeTimer);
+      try { audio.volume = 0; } catch (e) {}
       var p = audio.play();
       if (p && p.then) {
         return p.then(function () { fadeTo(target); render(); return true; }, function () { render(); return false; });
@@ -184,12 +185,13 @@
       return Promise.resolve(true);
     }
     function pause() {
+      btn.classList.remove("is-playing");
       fadeTo(0, function () { audio.pause(); render(); });
     }
 
     btn.addEventListener("click", function () {
       if (audio.paused) { savePref("on"); play(); }
-      else { savePref("off"); pause(); render(); btn.classList.remove("is-playing"); label.textContent = "Звук выкл"; }
+      else { savePref("off"); pause(); }
     });
     audio.addEventListener("play", render);
     audio.addEventListener("pause", render);
