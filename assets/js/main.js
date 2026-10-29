@@ -57,22 +57,24 @@
         var c = it.c;
         var past = it.d < today;
         var btn;
-        var url = c.ticketUrl || CFG.ticketsUrl;
+        // своя ссылка → ссылка QTICKETS по номеру мероприятия → общая ссылка
+        var url = c.ticketUrl || (c.qtId ? "https://qtickets.ru/event/" + c.qtId : "") || CFG.ticketsUrl;
         var aria = ' aria-label="Купить билет — ' + esc(c.place) + ", " + ddmm(it.d) + '"';
         if (past) {
           btn = '<span class="gig__btn is-past">Прошёл</span>';
         } else if (url) {
-          btn = '<a class="gig__btn" href="' + esc(url) + '" target="_blank" rel="noopener"' + aria + ">Купить билет</a>";
+          // класс qtickets-button — виджет QTICKETS откроет покупку во всплывающем окне на сайте
+          btn = '<a class="gig__btn qtickets-button" href="' + esc(url) + '" rel="noopener"' + aria + "><span class=\"lbl-long\">Купить билет</span><span class=\"lbl-short\">Билет</span></a>";
         } else {
           // ссылки ещё нет — по клику показываем окно «продажа скоро откроется»
-          btn = '<button type="button" class="gig__btn" data-notice="' + concerts.indexOf(it) + '"' + aria + ">Купить билет</button>";
+          btn = '<button type="button" class="gig__btn" data-notice="' + concerts.indexOf(it) + '"' + aria + "><span class=\"lbl-long\">Купить билет</span><span class=\"lbl-short\">Билет</span></button>";
         }
         return (
           '<li class="gig' + (past ? " is-past" : "") + '" style="--i:' + i++ + '">' +
           '<time class="gig__date" datetime="' + esc(c.date) + '">' + ddmm(it.d) + "</time>" +
-          '<span class="gig__district">' + esc(c.district) + "</span>" +
+          '<span class="gig__district">' + esc(c.district) + (c.time ? '<span class="gig__time"> · ' + esc(c.time) + "</span>" : "") + "</span>" +
           '<span class="gig__place">' + esc(c.place) + "</span>" +
-          '<span class="gig__venue' + (c.venue ? " has-venue" : "") + '">' + (c.venue ? esc(c.venue) : "—") + "</span>" +
+          '<span class="gig__venue' + (c.venue ? " has-venue" : "") + '">' + (c.venue ? esc(c.venue) : esc(c.time || "—")) + "</span>" +
           btn +
           "</li>"
         );
@@ -318,7 +320,7 @@
 
     function open(it) {
       lastFocus = document.activeElement;
-      document.getElementById("notice-date").textContent = ddmm(it.d) + "." + it.d.getFullYear() + " · " + it.c.district;
+      document.getElementById("notice-date").textContent = ddmm(it.d) + "." + it.d.getFullYear() + (it.c.time ? ", " + it.c.time : "") + " · " + it.c.district;
       document.getElementById("notice-title").textContent = it.c.place;
       box.hidden = false;
       document.body.classList.add("menu-open");
