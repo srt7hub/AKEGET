@@ -506,6 +506,9 @@ section { position: relative; }
 .gig__district { font-size: 12.5px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
 .gig__place { font-size: 14.5px; font-weight: 500; }
 .gig__venue { color: var(--muted); font-size: 14px; }
+.gig__time { display: none; }
+.gig__btn { white-space: nowrap; }
+.gig__btn .lbl-short { display: none; }
 .gig__btn {
   position: relative;
   display: inline-flex;
@@ -803,7 +806,7 @@ a.social:hover .social__go { color: var(--red-2); }
   .month__label::before { top: 0; width: 64px; }
   .month + .month { margin-top: 18px; }
   .gig {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 66px minmax(0, 1fr) auto;
     grid-template-areas:
       "date place btn"
       "date district btn";
@@ -815,9 +818,12 @@ a.social:hover .social__go { color: var(--red-2); }
   .gig__place { grid-area: place; font-size: 15px; }
   .gig__district { grid-area: district; font-size: 11px; color: var(--muted); }
   .gig__venue { display: none; }
+  .gig__time { display: inline; }
   .gig__venue.has-venue { display: block; grid-area: venue; }
   .gig:has(.gig__venue.has-venue) { grid-template-areas: "date place btn" "date district btn" "date venue btn"; }
   .gig__btn { grid-area: btn; width: auto; min-width: 84px; padding: 10px 12px; font-size: 11px; }
+  .gig__btn .lbl-long { display: none; }
+  .gig__btn .lbl-short { display: inline; }
   .schedule__note { margin-left: 0; }
 
   .reel { gap: 10px; }
