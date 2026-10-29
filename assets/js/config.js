@@ -24,26 +24,31 @@ window.AKYEGET = {
 
   /* ---------- Концерты ----------
      date      — "ГГГГ-ММ-ДД"
+     time      — начало концерта
      district  — район / город
      place     — населённый пункт
-     venue     — площадка (если пусто, в таблице будет «—»)
-     ticketUrl — ссылка на мероприятие в QTICKETS,
-                 например "https://<город>.qtickets.events/12345-..."  */
+     venue     — площадка (если пусто, в таблице показывается время начала)
+     qtId      — номер мероприятия в QTICKETS: по нему кнопка «Купить билет»
+                 открывает покупку (https://qtickets.ru/event/<номер>)
+     ticketUrl — своя ссылка на билеты вместо QTICKETS (обычно пусто)  */
   concerts: [
-    { date: "2026-11-20", district: "Дуванский район",       place: "Месягутово",        venue: "", ticketUrl: "" },
-    { date: "2026-11-21", district: "Салаватский район",     place: "Малояз",            venue: "", ticketUrl: "" },
-    { date: "2026-11-27", district: "Стерлибашевский район", place: "Стерлибашево",      venue: "", ticketUrl: "" },
-    { date: "2026-11-28", district: "г. Салават",            place: "Салават",           venue: "", ticketUrl: "" },
-    { date: "2026-12-11", district: "Бурзянский район",      place: "Старосубхангулово", venue: "", ticketUrl: "" },
-    { date: "2026-12-12", district: "Белорецкий район",      place: "Белорецк",          venue: "", ticketUrl: "" },
-    { date: "2026-12-13", district: "Учалинский район",      place: "Учалы",             venue: "", ticketUrl: "" },
-    { date: "2027-01-03", district: "Баймакский район",      place: "Темясово",          venue: "", ticketUrl: "" },
-    { date: "2027-01-04", district: "Баймакский район",      place: "Сайгафар",          venue: "", ticketUrl: "" },
-    { date: "2027-01-05", district: "Абзелиловский район",   place: "Аскарово",          venue: "", ticketUrl: "" },
-    { date: "2027-01-06", district: "Абзелиловский район",   place: "Халилово",          venue: "", ticketUrl: "" },
-    { date: "2027-01-07", district: "Белорецкий район",      place: "Шигаево",           venue: "", ticketUrl: "" },
-    { date: "2027-01-08", district: "Учалинский район",      place: "Уральск",           venue: "", ticketUrl: "" },
-    { date: "2027-01-09", district: "Учалинский район",      place: "Ильчино",           venue: "", ticketUrl: "" }
+    { date: "2026-11-20", time: "19:00", district: "Дуванский район",        place: "Месягутово",          venue: "", qtId: 270367, ticketUrl: "" },
+    { date: "2026-11-21", time: "19:00", district: "Салаватский район",      place: "Малояз",              venue: "", qtId: 270369, ticketUrl: "" },
+    { date: "2026-11-22", time: "19:00", district: "Мечетлинский район",     place: "Большеустьикинское",  venue: "", qtId: 270371, ticketUrl: "" },
+    { date: "2026-11-27", time: "19:00", district: "Стерлибашевский район",  place: "Стерлибашево",        venue: "", qtId: 270373, ticketUrl: "" },
+    { date: "2026-11-28", time: "19:00", district: "г. Салават",             place: "Салават",             venue: "", qtId: 270374, ticketUrl: "" },
+    { date: "2026-12-04", time: "19:00", district: "г. Архангельск",         place: "Архангельск",         venue: "", qtId: 270375, ticketUrl: "" },
+    { date: "2026-12-05", time: "19:00", district: "Кырмыскалинский район",  place: "Кырмыскалы",          venue: "", qtId: 270377, ticketUrl: "" },
+    { date: "2026-12-11", time: "19:00", district: "Бурзянский район",       place: "Старосубхонгулово",   venue: "", qtId: 270379, ticketUrl: "" },
+    { date: "2026-12-12", time: "19:00", district: "г. Белорецк",            place: "Белорецк",            venue: "", qtId: 270380, ticketUrl: "" },
+    { date: "2026-12-13", time: "19:00", district: "г. Учалы",               place: "Учалы",               venue: "", qtId: 270381, ticketUrl: "" },
+    { date: "2027-01-03", time: "19:00", district: "Баймакский район",       place: "Темясово",            venue: "", qtId: 270382, ticketUrl: "" },
+    { date: "2027-01-04", time: "19:00", district: "Баймакский район",       place: "Сайгафар",            venue: "", qtId: 270384, ticketUrl: "" },
+    { date: "2027-01-05", time: "19:00", district: "Абзелиловский район",    place: "Аскарово",            venue: "", qtId: 270385, ticketUrl: "" },
+    { date: "2027-01-06", time: "19:00", district: "Абзелиловский район",    place: "Халилово",            venue: "", qtId: 270386, ticketUrl: "" },
+    { date: "2027-01-07", time: "19:00", district: "Белорецкий район",       place: "Шигаево",             venue: "", qtId: 270387, ticketUrl: "" },
+    { date: "2027-01-08", time: "19:00", district: "Учалинский район",       place: "Уральск",             venue: "", qtId: 270388, ticketUrl: "" },
+    { date: "2027-01-09", time: "19:00", district: "Учалинский район",       place: "Ильчино",             venue: "", qtId: 270389, ticketUrl: "" }
   ],
 
   /* ---------- Фото для карусели ---------- */
