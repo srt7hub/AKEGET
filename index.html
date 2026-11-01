@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Unbounded:wght@300;500;700;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero-artist.webp?v=14">
-  <link rel="stylesheet" href="assets/css/style.css?v=25">
+  <link rel="stylesheet" href="assets/css/style.css?v=27">
 </head>
 <body>
   <a class="skip" href="#concerts">К концертам</a>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="schedule" id="schedule"><!-- заполняется из config.js --></div>
-        <p class="schedule__note reveal">Все концерты — совместно с IRDAN · Билеты продаются через QTICKETS</p>
+        <p class="schedule__note reveal">Все концерты — совместно с IRDAN · Билеты продаются через QTICKETS · Если оплата не открывается, выключите VPN</p>
       </div>
     </section>
 
@@ -157,10 +157,16 @@
     </div>
   </div>
 
+  <!-- ================= VPN HINT ================= -->
+  <div class="toast" id="vpn-hint" role="status" aria-live="polite" hidden>
+    <p class="toast__text"><b>Включён VPN?</b> Выключите его — иначе окно оплаты билетов может не открыться.</p>
+    <button class="toast__close" type="button" aria-label="Закрыть подсказку">×</button>
+  </div>
+
   <audio id="music" preload="auto" loop></audio>
 
-  <script src="assets/js/config.js?v=26"></script>
-  <script src="assets/js/main.js?v=26"></script>
+  <script src="assets/js/config.js?v=27"></script>
+  <script src="assets/js/main.js?v=28"></script>
   <!-- виджет покупки билетов QTICKETS: открывает оплату во всплывающем окне -->
   <script src="https://cdn.qtickets.tech/openapi.js"></script>
 </body>
