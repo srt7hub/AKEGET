@@ -11,8 +11,8 @@ window.AKYEGET = {
      Включается при открытии сайта (если браузер запрещает автозапуск —
      с первого клика/касания по странице). */
   music: {
-    src: "assets/audio/akyeget-bashkort-atly-aryslan.mp3",
-    title: "Башкорт атлы арыслан",
+    src: "assets/audio/akyeget-kayef-tota-bashkorttar.mp3",
+    title: "Кайеф тота Башкорттар",
     volume: 0.6
   },
 

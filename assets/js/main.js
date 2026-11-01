@@ -313,6 +313,41 @@
     }
   }
 
+  /* ---------------- VPN hint ---------------- */
+  // С включённым VPN окно оплаты QTICKETS часто не грузится — подсказываем при нажатии на «Билет»
+  function initVpnHint() {
+    var box = document.getElementById("vpn-hint");
+    var timer = null;
+
+    function hide() {
+      box.classList.remove("is-open");
+      clearTimeout(timer);
+      timer = setTimeout(function () { box.hidden = true; }, 350);
+    }
+    function show() {
+      clearTimeout(timer);
+      box.hidden = false;
+      setTimeout(function () { box.classList.add("is-open"); }, 10);
+      timer = setTimeout(hide, 8000);
+    }
+
+    // На телефоне QTICKETS открывает оплату в новой вкладке — подсказка остаётся позади.
+    // Если человек вернулся на сайт вскоре после нажатия (оплата могла не открыться), показываем её снова.
+    var clickedAt = 0;
+    document.getElementById("schedule").addEventListener("click", function (e) {
+      if (!e.target.closest("a.gig__btn")) return;
+      clickedAt = Date.now();
+      show();
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && clickedAt && Date.now() - clickedAt < 10 * 60 * 1000) {
+        clickedAt = 0;
+        show();
+      }
+    });
+    box.querySelector(".toast__close").addEventListener("click", hide);
+  }
+
   /* ---------------- Ticket notice ---------------- */
   function initNotice() {
     var box = document.getElementById("notice");
@@ -352,6 +387,7 @@
   renderContacts();
   initHeader();
   initNotice();
+  initVpnHint();
   initParallax();
   initMusic();
   observeReveals();
