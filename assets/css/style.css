@@ -528,6 +528,26 @@ section { position: relative; }
 .gig__btn:not(.is-past) { border-color: rgba(228, 35, 58, 0.5); }
 .gig__btn:not(.is-past):hover { background: var(--wine-2); border-color: rgba(255, 110, 120, 0.7); }
 .gig__btn.is-past { color: var(--muted); cursor: default; }
+/* Скрипт QTICKETS вставляет свои стили для .qtickets-button (бирюзовый фон, Arial, 180px)
+   позже наших — возвращаем кнопкам оформление сайта более точным селектором. */
+.gig a.gig__btn.qtickets-button {
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--gig-btn-ink, var(--ink));
+  background: var(--gig-btn-bg, rgba(20, 15, 15, 0.7));
+  border: 1px solid var(--gig-btn-border, rgba(228, 35, 58, 0.5));
+  border-radius: 4px;
+}
+.gig a.gig__btn.qtickets-button:hover {
+  color: var(--gig-btn-hover-ink, var(--ink));
+  background: var(--gig-btn-hover-bg, var(--wine-2));
+  border-color: var(--gig-btn-hover-border, rgba(255, 110, 120, 0.7));
+}
 .gig.is-past { opacity: 0.4; }
 .gig.is-past .gig__date { border-color: var(--muted); }
 
@@ -617,6 +637,34 @@ a.social:hover .social__go { color: var(--red-2); }
 .footer { border-top: 1px solid var(--line); padding: 22px 0 calc(22px + env(safe-area-inset-bottom)); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
 .footer__inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .footer__top:hover { color: var(--ink); }
+
+/* ---------- VPN hint (поверх окна оплаты QTICKETS) ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  z-index: 2147483647;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: min(460px, calc(100% - 32px));
+  padding: 14px 14px 14px 18px;
+  border: 1px solid var(--line-2);
+  border-left: 3px solid var(--red);
+  border-radius: 4px;
+  background: #161010;
+  box-shadow: 0 18px 50px -10px rgba(0, 0, 0, 0.7);
+  color: var(--ink);
+  translate: -50% 16px;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease), translate 0.35s var(--ease);
+}
+.toast[hidden] { display: none; }
+.toast.is-open { opacity: 1; translate: -50% 0; }
+.toast__text { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.toast__text b { color: var(--ink); font-weight: 600; }
+.toast__close { flex: none; width: 28px; height: 28px; margin: -4px -4px 0 0; font-size: 22px; line-height: 1; color: var(--muted); transition: color 0.3s; }
+.toast__close:hover { color: var(--ink); }
 
 /* ---------- Ticket notice ---------- */
 .notice {
@@ -822,6 +870,7 @@ a.social:hover .social__go { color: var(--red-2); }
   .gig__venue.has-venue { display: block; grid-area: venue; }
   .gig:has(.gig__venue.has-venue) { grid-template-areas: "date place btn" "date district btn" "date venue btn"; }
   .gig__btn { grid-area: btn; width: auto; min-width: 84px; padding: 10px 12px; font-size: 11px; }
+  .gig a.gig__btn.qtickets-button { width: auto; font-size: 11px; }
   .gig__btn .lbl-long { display: none; }
   .gig__btn .lbl-short { display: inline; }
   .schedule__note { margin-left: 0; }
